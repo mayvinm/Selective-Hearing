@@ -5,3 +5,7 @@ Currently working on:
 1.    Defining core functionality of ASL learning app
 2.    Sketching UI
 3.    Explore languages and technical requirements
+4.    Connecting Database to Android Studio app
+
+Finished:
+1.    
