@@ -1,5 +1,8 @@
 -- this is a single line comment in SQL language
 -- SQL is not case sensitive
+-- SQL is for creating the database that we will connect
+-- to the android studio app and use it 
+-- for the login system, lessons, and quizes
 Create Database ASL; -- creates database
 
 -- Login system
