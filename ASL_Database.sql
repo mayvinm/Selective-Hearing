@@ -1,7 +1,8 @@
 -- this is a single line comment in SQL language
+-- SQL is not case sensitive
 Create Database ASL; -- creates database
 
---
+-- Login system
 Create Table login(
     id int(5) Not null,
     fName char(10) Not null,
@@ -12,6 +13,7 @@ Create Table login(
     Primary Key(id)
 );
 
+-- For lessons and quizes
 Create Table questions(
     id Integer Not null,
     question Text Not null,
