@@ -1,17 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 /**
- * Write a description of class registerScreen here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Started by Cameron on March 5th
  */
-public class registerScreen extends JPanel{
+public class registerScreen{
     private JFrame frame = new JFrame("Register");
     private JPanel panel = new JPanel(new GridLayout(4, 3));
     private JLabel text = new JLabel("Success!!!!!!!!!!!!");
     public registerScreen(){
-        setLayout(new BorderLayout());
+        panel.setLayout(new BorderLayout());
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(text);
