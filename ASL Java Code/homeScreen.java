@@ -6,14 +6,14 @@ import java.awt.event.*; //actionlistener
  * Started by Cameron
  * Edited by Cameron on March 5th
  */
-public class homeScreen extends JPanel{
+public class homeScreen{
     private JPanel keyPanel;
     private JLabel greeting; //text in the frame
     private JButton login, register;
     private JFrame frame = new JFrame("ASL - American Sign Language");
 
     public homeScreen(){
-        setLayout(new BorderLayout());
+        keyPanel.setLayout(new BorderLayout());
         keyPanel = new JPanel(new GridLayout(4, 3));
         greeting = new JLabel("Welcome to the ASL App!");//message at top of screen
 
