@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 /**
  * Started by Cameron on March 5th
+ * For now, this is just being used to test the buttons
+ * from other classes to ensure they work
  */
 public class Lesson{
     private JFrame frame = new JFrame("Lessons");
