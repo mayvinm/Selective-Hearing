@@ -1,17 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 /**
- * Write a description of class loginScreen here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Started by Cameron on March 5th
  */
-public class loginScreen extends JPanel{
+public class loginScreen{
     private JFrame frame = new JFrame("Log In");
     private JPanel panel = new JPanel(new GridLayout(4, 3));
     private JLabel text = new JLabel("Success");
     public loginScreen(){
-        setLayout(new BorderLayout());
+        panel.setLayout(new BorderLayout());
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(text);
