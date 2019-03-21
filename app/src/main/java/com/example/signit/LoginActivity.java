@@ -1,5 +1,6 @@
 package com.example.signit;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
+    SharedPreferences fileWriter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,13 +18,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Button submitLogin = (Button) findViewById(R.id.submitLogin);
         submitLogin.setOnClickListener(this);
+        fileWriter = getSharedPreferences("loginFile", MODE_PRIVATE);
     }
     @Override
     public void onClick(View v){
         EditText usernameField = (EditText) findViewById(R.id.usernameField);
         EditText passwordField = (EditText) findViewById(R.id.passwordField);
 
-        String enteredUname = ((SpannableStringBuilder)usernameField.getText()).toString();
-        String enteredPword = ((SpannableStringBuilder)passwordField.getText()).toString();
+        String enteredUname = (usernameField.getText()).toString();
+        String enteredPword = (passwordField.getText()).toString();
+
+
     }
 }
