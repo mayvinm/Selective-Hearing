@@ -36,4 +36,3 @@ public class registerScreen extends JPanel{
         frame.setVisible(true);
     }
 }
-
