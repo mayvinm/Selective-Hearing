@@ -8,6 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+/*
+* This class is meant to manage all comunications with the database. 
+*/
 public class DatabaseConnection {
 	private Connection dbConnection;
 	private int maxID;
