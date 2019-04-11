@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,9 +8,7 @@ import java.sql.*;
  * Edited by Cameron on April 1st
  */
 public class loginScreen{
-    private Connection conn;
-    private Statement stmt;
-    private ResultSet rs;
+	private DatabaseConnection loginHandler;
     private JFrame frame = new JFrame("Log In");
     private JPanel panel = new JPanel();
     private JLabel username = new JLabel("Username: ");
@@ -18,19 +17,8 @@ public class loginScreen{
     private JTextField userInput = new JTextField(10);
     private JTextField passInput = new JTextField(10); 
     public loginScreen(){
-        connect();
+    	loginHandler = new DatabaseConnection();
         frame();
-    }
-    
-    public void connect(){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/asl", "root", "");
-            stmt = conn.createStatement();
-            //conn.close();
-        }catch(Exception e){
-            System.out.println(e);
-        }
     }
     
     public void frame(){
@@ -58,29 +46,15 @@ public class loginScreen{
         
         submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
-                try{
                     String user = userInput.getText().trim();
                     String pass = passInput.getText().trim();
-                    String sql = "Select username, password From login Where username = '" + user + "'and password = '" + pass + "'";
-                    rs = stmt.executeQuery(sql);
-                    int count = 0;
-                    while(rs.next()){
-                        count = count + 1;
-                
+                    if(loginHandler.login(user, pass)) {
+                    	new Lesson();
+                    	frame.dispose();
+                    }else {
+                    	JOptionPane.showMessageDialog(null, "User name and password do not match!");
                     }
-                    
-                    if (count == 1){
-                        JOptionPane.showMessageDialog(null, "User Found, Access Granted");
-                        frame.dispose();
-                        new Lesson();
-                    }else if(count > 1){
-                        JOptionPane.showMessageDialog(null, "Duplicate User, Access Denied");
-                    }else{
-                        JOptionPane.showMessageDialog(null, "User not Found!");
-                    }
-                }catch(Exception e){
-                    
-                }
+              
             }
         });
     }
