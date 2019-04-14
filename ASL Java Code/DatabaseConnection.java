@@ -122,22 +122,19 @@ public class DatabaseConnection {
 	 */
 	public boolean addAccount(User newUser, String pass) {
 		this.maxID++;
-		String queryString = "insert into login (id, fName, lName, username, password, email)"
-						   + " values (?, ?, ?, ?, ?, ?)";
+		String queryString = "insert into login values(" + this.maxID 
+											+ ", '" + newUser.getFirstName()
+											+ "', '" + newUser.getLastName()
+											+ "', '" + newUser.getUsername()
+											+ "', '" + pass
+											+ "', '" + newUser.getEmail() + "')";
 		try {
-			PreparedStatement prepStmt = dbConnection.prepareStatement(queryString);
-			prepStmt.setInt(1,  this.maxID);
-			prepStmt.setString(2, newUser.getFirstName());
-			prepStmt.setString(3, newUser.getLastName());
-			prepStmt.setString(4, newUser.getUsername());
-			prepStmt.setString(5, pass);
-			prepStmt.setString(6, newUser.getEmail());
-			prepStmt.execute();
+			Statement stmt = dbConnection.createStatement();
+			stmt.executeUpdate(queryString);
 			return true;
 		}catch(Exception e) {
 			return false;
 		}
-		return false;
 	}
 	/*
 	 * Closes out the connection to the database. ALWAYS call this when you are done using the database. 
