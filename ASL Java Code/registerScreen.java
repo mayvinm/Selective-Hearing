@@ -19,7 +19,7 @@ public class registerScreen extends JPanel{
     private JTextField emailAddress;
     
     private JTextField userName;
-    private JTextField password;
+    private JPasswordField password;
     
     private String enteredUserName;
     private String enteredPassword;
@@ -135,7 +135,7 @@ public class registerScreen extends JPanel{
     	JLabel pWord = new JLabel("Password ");
     	
     	this.userName = new JTextField(10);
-    	this.password = new JTextField(10);
+    	this.password = new JPasswordField(10);
     	
     	gbc.fill = GridBagConstraints.WEST;
     	gbc.gridx = 0;
