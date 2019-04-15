@@ -7,14 +7,14 @@ import java.sql.*;
  * Edited by Cameron on April 1st
  */
 public class loginScreen{
-	private DatabaseConnection loginHandler;
+    private DatabaseConnection loginHandler;
     private JFrame frame = new JFrame("Log In");
     private JPanel panel = new JPanel();
     private JLabel username = new JLabel("Username: ");
     private JLabel password = new JLabel("Password: ");
     private JButton submit = new JButton("Submit");
     private JTextField userInput = new JTextField(10);
-    private JTextField passInput = new JTextField(10); 
+    private JPasswordField passInput = new JPasswordField(10); 
     public loginScreen(){
     	loginHandler = new DatabaseConnection();
         frame();
