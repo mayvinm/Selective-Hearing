@@ -4,14 +4,9 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-/*
-* This class is meant to manage all comunications with the database. 
-*/
 public class DatabaseConnection {
 	private Connection dbConnection;
 	private int maxID;
@@ -25,10 +20,11 @@ public class DatabaseConnection {
 			"jdbc:mysql://localhost:3306/loginDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/New_York", "root", "");
 			System.out.println("Database connection successful!");
 		
-			String maxIDQuery = "select max(id) from login as 'MaxValue'";
+			String maxIDQuery = "select max(id) from login";
 			Statement stmt = dbConnection.createStatement();
 			ResultSet maxID = stmt.executeQuery(maxIDQuery);
-			this.maxID = maxID.getInt("MaxValue");
+			maxID.next();
+			this.maxID = maxID.getInt(1);
 
 		}catch(Exception e) {
 			System.out.println(e.toString());
@@ -46,7 +42,7 @@ public class DatabaseConnection {
 			dbConnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
 			System.out.println("Database connection successful!");
 		
-			String maxIDQuery = "select max(id) from login as 'MaxValue'";
+			String maxIDQuery = "select max(id) from login";
 			Statement stmt = dbConnection.createStatement();
 			ResultSet maxID = stmt.executeQuery(maxIDQuery);
 			this.maxID = maxID.getInt("MaxValue");
@@ -93,7 +89,6 @@ public class DatabaseConnection {
 		}catch(Exception e) {
 			return null;
 		}
-		return null;
 	}
 	/*
 	 * Checks to see if the given username exists. Mostly used in the account 
