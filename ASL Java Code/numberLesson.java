@@ -75,6 +75,7 @@ public class numberLesson{
         //JPanel buttons = new JPanel(new GridBagLayout());
         //buttons.add(endButton, gbc);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setContentPane(scrPanel);
         frame.pack();
         frame.setVisible(true);
