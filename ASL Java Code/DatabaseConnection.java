@@ -45,7 +45,7 @@ public class DatabaseConnection {
 			String maxIDQuery = "select max(id) from login";
 			Statement stmt = dbConnection.createStatement();
 			ResultSet maxID = stmt.executeQuery(maxIDQuery);
-			this.maxID = maxID.getInt("MaxValue");
+			this.maxID = maxID.getInt(1);
 
 		}catch(Exception e) {
 			System.out.println(e.toString());
