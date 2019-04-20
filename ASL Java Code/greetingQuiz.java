@@ -11,6 +11,9 @@ public class greetingQuiz{
     private Connection conn;
     private Statement stmt;
     private ResultSet rs;
+    private Timer timer;
+    private long startTime = -1;
+    private long duration = -1;
     private JFrame frame = new JFrame("Greetings Quiz");
     private JPanel panel = new JPanel();
     private JLabel message = new JLabel("Enter the word/phrase of the sign being done.");
@@ -21,8 +24,30 @@ public class greetingQuiz{
     private JTextField questionTwoInput = new JTextField(10);
     private JTextField questionThreeInput = new JTextField(10);
     private JTextField questionFourInput = new JTextField(10);
+    private JTextField questionFiveInput = new JTextField(10);
     public greetingQuiz(){  
         //connect();
+        
+        timer = new Timer(60000, new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                
+                //code to automatically end quiz goes here
+                JOptionPane.showMessageDialog(null, "You have run out of time! Answers being submitted.");
+                
+                
+                if (startTime < 0) {
+                      startTime = System.currentTimeMillis();
+                }
+                long now = System.currentTimeMillis();
+                long clockTime = now - startTime;
+                if (clockTime >= duration) {
+                      //clockTime = duration;
+                      timer.stop();
+                }
+                endButton.doClick();
+            }
+        });
+        timer.start();
         endButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
