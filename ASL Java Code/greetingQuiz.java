@@ -1,96 +1,58 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 /**
  * Started by Cameron on March 23rd
- * Edited by Cameron on April 1st
- * 
+ * Edited by Cameron on April 1st, April 16th and April 20th
  */
 public class greetingQuiz{
-    private Connection conn;
-    private Statement stmt;
-    private ResultSet rs;
-    private Timer timer;
-    private long startTime = -1;
-    private long duration = -1;
     private JFrame frame = new JFrame("Greetings Quiz");
     private JPanel panel = new JPanel();
-    private JLabel message = new JLabel("Enter the word/phrase of the sign being done.");
-    private JLabel questionOne = new JLabel("Question 1");
-    private JLabel questionTwo = new JLabel("Question 2");
-    private JButton endButton = new JButton("Finish");
-    private JTextField questionOneInput = new JTextField(10);
-    private JTextField questionTwoInput = new JTextField(10);
-    private JTextField questionThreeInput = new JTextField(10);
-    private JTextField questionFourInput = new JTextField(10);
-    private JTextField questionFiveInput = new JTextField(10);
-    public greetingQuiz(){  
-        //connect();
-        
-        timer = new Timer(60000, new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                
-                //code to automatically end quiz goes here
-                JOptionPane.showMessageDialog(null, "You have run out of time! Answers being submitted.");
-                
-                
-                if (startTime < 0) {
-                      startTime = System.currentTimeMillis();
-                }
-                long now = System.currentTimeMillis();
-                long clockTime = now - startTime;
-                if (clockTime >= duration) {
-                      //clockTime = duration;
-                      timer.stop();
-                }
-                endButton.doClick();
-            }
-        });
-        timer.start();
-        endButton.addActionListener(new ActionListener(){
+    //br tag put the second part of the message on a new line, center tag centers the text, font tag increases font size, html tag required
+    private JLabel message = new JLabel("<html><font size='5'><center>Welcome to the Greetings Quiz! Answer the questions on the following pages.</center>" + 
+        "<br/><center>You will have 1 minute to complete each question.</center>" + "<br/>Click 'Submit and Check' once your answers are inputted." + 
+        "<br/>The system will tell you if your answer is correct or not then move you to the next question. When you are ready, click 'Start'." +
+        "<br/>Click 'Quit' if you want to go back to the Quiz page at anytime, but your current question will not be saved.</font></html>");
+    private JButton startButton = new JButton("<html><font size='5'>Start</font></html>");
+    private JButton quitButton = new JButton("<html><font size='5'>Quit</font></html>");
+    public greetingQuiz(){
+        frame();
+        //disposes the frame and opens the quiz class
+        quitButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
                 new Quiz();
             }
         });
-        
+        //when clicked, disposes current frame and opens the first question class
+        startButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent event){
+                frame.dispose();
+                new GreetQuestionOne();
+            }
+        });
+    }
+    
+    public void frame(){
         panel.setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
         
         panel.add(message, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/helloSign.png")), gbc);
-        panel.add(questionOne, gbc);
-        panel.add(questionOneInput, gbc);
-        //more quiz questions in the above order
-        //image here
-        panel.add(questionTwo, gbc);
-        panel.add(questionTwoInput, gbc);
         
         JPanel buttons = new JPanel(new GridBagLayout());
-        buttons.add(endButton, gbc);
+        buttons.add(startButton, gbc);
+        buttons.add(quitButton, gbc);
 
         gbc.weighty = 1;
         panel.add(buttons, gbc);
         
+        //JScrollPane scrPanel = new JScrollPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);
-    }
-    //A. Hello  B. Bye  C. How are you?  D.
-    public void connect(){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/asl", "root", "");
-            stmt = conn.createStatement();
-            //conn.close();
-        }catch(Exception e){
-            System.out.println(e);
-        }
     }
 }
