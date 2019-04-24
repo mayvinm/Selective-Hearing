@@ -6,10 +6,8 @@ import java.sql.*;
  * Started by Cameron on March 23rd
  * Edited by Cameron on April 1st, April 3rd, April 16th - 20th 
  * have the alphabet lesson be the free trail
- * has a serious logical error when submiting the answers trying to fix it
- * fixed it by putting each question in its own class
  */
-public class numberQuiz{
+public class NumberQuiz{
     private JFrame frame = new JFrame("Numbers Quiz");
     private JPanel panel = new JPanel();
     //br tag put the second part of the message on a new line, center tag centers the text, font tag increases font size, html tag required
@@ -19,7 +17,7 @@ public class numberQuiz{
         "<br/>Click 'Quit' if you want to go back to the Quiz page at anytime, but your current question will not be saved.</font></html>");
     private JButton startButton = new JButton("<html><font size='5'>Start</font></html>");
     private JButton quitButton = new JButton("<html><font size='5'>Quit</font></html>");
-    public numberQuiz(){
+    public NumberQuiz(){
         frame();
         //disposes the frame and opens the quiz class
         quitButton.addActionListener(new ActionListener(){
