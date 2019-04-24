@@ -30,21 +30,21 @@ public class Lesson{
             public void actionPerformed(ActionEvent event){
                 JOptionPane.showMessageDialog(null, "Logged Out!");
                 frame.dispose();
-                new homeScreen();
+                new HomeScreen();
             }
         });
         
         greetButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
-                new greetingLesson();
+                new GreetingLesson();
             }
         });
         
         numberButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
-                new numberLesson();
+                new NumberLesson();
             }
         });
         
