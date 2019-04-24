@@ -6,7 +6,7 @@ import java.sql.*;
  * Started by Cameron on March 5th
  * Edited by Cameron on April 1st
  */
-public class loginScreen{
+public class LoginScreen{
     private DatabaseConnection loginHandler;
     private JFrame frame = new JFrame("Log In");
     private JPanel panel = new JPanel();
@@ -15,7 +15,7 @@ public class loginScreen{
     private JButton submit = new JButton("Submit");
     private JTextField userInput = new JTextField(10);
     private JPasswordField passInput = new JPasswordField(10); 
-    public loginScreen(){
+    public LoginScreen(){
     	loginHandler = new DatabaseConnection();
         frame();
     }
@@ -48,10 +48,10 @@ public class loginScreen{
                     String user = userInput.getText().trim();
                     String pass = passInput.getText().trim();
                     if(loginHandler.login(user, pass)) {
-                    	new Lesson();
                     	frame.dispose();
+                        new Lesson();
                     }else {
-                    	JOptionPane.showMessageDialog(null, "User name and password do not match!");
+                    	JOptionPane.showMessageDialog(null, "Username and password do not match!");
                     }
               
             }
