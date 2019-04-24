@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.sql.*;
 /**
  * Created by Cameron on April 20th
+ * Edited by Cameron on April 22nd
  */
 public class NumQuestionOne{
     private Connection conn;
@@ -11,10 +12,10 @@ public class NumQuestionOne{
     private ResultSet rs;
     private String value;
     private Timer timer;
-    private long startTime = -1;
-    private long duration = -1;
+    private int counter = 0;
     private JFrame frame = new JFrame("Numbers Quiz: Question One");
     private JPanel panel = new JPanel();
+    private final JLabel TIME = new JLabel("0" + " seconds");
     //html and br tags put the second part of the message on a new line
     private JLabel message = new JLabel("<html><center>Answer the questions for each image.</center>" + 
         "<br/><center>You have 1 minute to complete the quiz.</center>" + "<br/>Click 'Finish' once your answers are inputted.</html>");
@@ -28,20 +29,18 @@ public class NumQuestionOne{
     public NumQuestionOne(){
         frame();
         //1000 milliseconds = 1 second
-        timer = new Timer(60000, new ActionListener(){//60 seconds
-            public void actionPerformed(ActionEvent e){
-                //code to automatically end quiz goes here
-                JOptionPane.showMessageDialog(null, "You have run out of time! Answers being submitted.");
-                if (startTime < 0) {
-                      startTime = System.currentTimeMillis();
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TIME.setText(String.valueOf(counter + " seconds"));
+                counter++;
+                //number must be 2 digits higher than time you want
+                if (counter == 62) {
+                    //timer.removeActionListener(this);
+                    JOptionPane.showMessageDialog(null, "You are out of time! Answer being submitted.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    submitButton.doClick();
+                    frame.dispose();
                 }
-                long now = System.currentTimeMillis();
-                long clockTime = now - startTime;
-                if (clockTime >= duration) {
-                      //clockTime = duration;
-                      timer.stop();
-                }
-                submitButton.doClick();
             }
         });
         timer.start();
@@ -144,9 +143,10 @@ public class NumQuestionOne{
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
         
+        panel.add(TIME, gbc);
         panel.add(message, gbc);
         //Question One
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberTen.gif")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberTen.gif")), gbc);
         panel.add(questionOne, gbc);
         panel.add(five, gbc);
         panel.add(ten, gbc);
@@ -160,10 +160,10 @@ public class NumQuestionOne{
         gbc.weighty = 1;
         panel.add(buttons, gbc);
         
-        JScrollPane scrPanel = new JScrollPane(panel);
+        //JScrollPane scrPanel = new JScrollPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setContentPane(scrPanel);
+        frame.setContentPane(panel);
         frame.pack(); //for if the window is minimized
         frame.setVisible(true);
     }
