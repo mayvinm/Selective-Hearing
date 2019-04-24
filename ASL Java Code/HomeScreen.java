@@ -6,7 +6,7 @@ import java.awt.event.*; //actionlistener
  * Started by Cameron on March 5th
  * Edited by Cameron on March 25th
  */
-public class homeScreen{
+public class HomeScreen{
     private JButton login = new JButton("Click to Log In");
     private JButton register = new JButton("Click to Register");
     private JButton freeTrial = new JButton("Click for Free Trail");
@@ -14,27 +14,27 @@ public class homeScreen{
     private JLabel message = new JLabel("<html><font size='5'><center>This application is owned and operated by MCRO Industeries. Any copying of the code </br>" 
         + "without written consent from owner will result in legal consquences and a possible fine of up to $10,000 depending on residency." + 
         "</br> Copyright 2019</center></font></html>");
-    public homeScreen(){
+    public HomeScreen(){
         //When button clicked, moves to login, register or
         //to alphabet lesson screen
         login.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
-                new loginScreen();
+                new LoginScreen();
             }
         });
         
         register.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
-                new registerScreen();
+                new RegisterScreen();
             }
         });
-        //using number lesson just for free trail code right now
+        //using alphabet for free trail 
         freeTrial.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
-                new greetingLesson();
+                //new GreetingLesson();
             }
         });
         
@@ -48,7 +48,7 @@ public class homeScreen{
     }
 
     public static void main(String[] args){
-        new homeScreen();
+        new HomeScreen();
     }
     
     private class MenuPane extends JPanel{
