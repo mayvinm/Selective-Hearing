@@ -5,7 +5,7 @@ import java.awt.event.*;
  * Started by Cameron on March 5th
  * Completed by Ryan on 4/13
  */
-public class registerScreen extends JPanel{
+public class RegisterScreen extends JPanel{
 	
     private JFrame frame = new JFrame("Register");
     private JPanel masterPanel = new JPanel(new GridLayout(3, 1, 5, 30));
@@ -31,7 +31,7 @@ public class registerScreen extends JPanel{
     
     private DatabaseConnection registerHandler;
     
-    public registerScreen(){
+    public RegisterScreen(){
         
     	loginInfoPanel = createLoginInfoPanel();
     	personalPanel = createPersonalInfoPanel();
@@ -57,7 +57,7 @@ public class registerScreen extends JPanel{
             	}
             	
                 frame.dispose();
-                new homeScreen();
+                new HomeScreen();
             }
         });
         
