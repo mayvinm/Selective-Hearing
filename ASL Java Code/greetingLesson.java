@@ -5,7 +5,7 @@ import java.awt.event.*;
  * Created by Cameron on April 4th
  * Edited by Cameron on April 5th
  */
-public class greetingLesson{
+public class GreetingLesson{
     private JFrame frame = new JFrame("Greetings Lesson");
     private JPanel panel = new JPanel();
     private JLabel message = new JLabel("<html>Learn the following greetings.<br/>" +
@@ -16,7 +16,7 @@ public class greetingLesson{
     private JLabel bye = new JLabel("Bye");
     private JLabel please = new JLabel("Please");
     private JButton endButton = new JButton("Done");
-    public greetingLesson(){
+    public GreetingLesson(){
         panel.setLayout(new GridBagLayout());        
         endButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
@@ -41,14 +41,9 @@ public class greetingLesson{
         panel.add(please, gbc);
         panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/byeSign.jpg")), gbc);
         panel.add(bye, gbc);
-        //panel.add(questionTwoInput, gbc);
-        //more quiz questions in the above order
-        //panel.add(password, gbc);
-        //panel.add(passInput, gbc);
         panel.add(endButton, gbc);
+        
         JScrollPane scrPanel = new JScrollPane(panel);
-        //JPanel buttons = new JPanel(new GridBagLayout());
-        //buttons.add(endButton, gbc);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setContentPane(scrPanel);
