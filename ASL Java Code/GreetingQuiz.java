@@ -5,7 +5,7 @@ import java.awt.event.*;
  * Started by Cameron on March 23rd
  * Edited by Cameron on April 1st, April 16th and April 20th
  */
-public class greetingQuiz{
+public class GreetingQuiz{
     private JFrame frame = new JFrame("Greetings Quiz");
     private JPanel panel = new JPanel();
     //br tag put the second part of the message on a new line, center tag centers the text, font tag increases font size, html tag required
@@ -15,7 +15,7 @@ public class greetingQuiz{
         "<br/>Click 'Quit' if you want to go back to the Quiz page at anytime, but your current question will not be saved.</font></html>");
     private JButton startButton = new JButton("<html><font size='5'>Start</font></html>");
     private JButton quitButton = new JButton("<html><font size='5'>Quit</font></html>");
-    public greetingQuiz(){
+    public GreetingQuiz(){
         frame();
         //disposes the frame and opens the quiz class
         quitButton.addActionListener(new ActionListener(){
