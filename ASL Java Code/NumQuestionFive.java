@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.sql.*;
 /**
  * Created by Cameron on April 20th
+ * Edited by Cameron on April 22nd
  */
 public class NumQuestionFive{
     private Connection conn;
@@ -11,39 +12,35 @@ public class NumQuestionFive{
     private ResultSet rs;
     private String value;
     private Timer timer;
-    private long startTime = -1;
-    private long duration = -1;
+    private int counter = 0;
     private JFrame frame = new JFrame("Numbers Quiz: Question Five");
     private JPanel panel = new JPanel();
+    private final JLabel TIME = new JLabel("0" + " seconds");
     //html and br tags put the second part of the message on a new line
     private JLabel message = new JLabel("<html><center>Answer the questions for each image.</center>" + 
         "<br/><center>You have 1 minute to complete the quiz.</center>" + "<br/>Click 'Finish' once your answers are inputted.</html>");
     private JLabel questionFive = new JLabel("Solve the following problem: __ + 10 = 15");
-    private JButton optionA = new JButton("A.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberSix.jpg"));
-    private JButton optionC = new JButton("C.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberFive.jpg"));
-    private JButton optionB = new JButton("B.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberThree.jpg"));
-    private JButton optionD = new JButton("D.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberTwo.jpg"));
+    private JButton optionA = new JButton("A.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberSix.jpg"));
+    private JButton optionC = new JButton("C.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberFive.jpg"));
+    private JButton optionB = new JButton("B.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberThree.jpg"));
+    private JButton optionD = new JButton("D.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberTwo.jpg"));
     //private JButton submitButton = new JButton("<html><font size='4'>Submit and Check</font></html>");
     private JButton quitButton = new JButton("Quit Quiz");
     public NumQuestionFive(){
         frame();
         //1000 milliseconds = 1 second
-        timer = new Timer(60000, new ActionListener(){//60 seconds
-            public void actionPerformed(ActionEvent e){
-                //code to automatically end quiz goes here
-                JOptionPane.showMessageDialog(null, "You have run out of time! Answers being submitted.");
-                if (startTime < 0) {
-                      startTime = System.currentTimeMillis();
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TIME.setText(String.valueOf(counter + "  seconds"));
+                counter++;
+                //number must be 2 digits higher than time you want
+                if (counter == 62) {
+                    //timer.removeActionListener(this);
+                    JOptionPane.showMessageDialog(null, "You are out of time! Answer being submitted.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    //submitButton.doClick();
+                    frame.dispose();
                 }
-                long now = System.currentTimeMillis();
-                long clockTime = now - startTime;
-                if (clockTime >= duration) {
-                      //clockTime = duration;
-                      timer.stop();
-                }
-                //submitButton.doClick();
-                frame.dispose();
-                new Quiz();
             }
         });
         timer.start();
@@ -169,10 +166,10 @@ public class NumQuestionFive{
         gbc.weighty = 1;
         panel.add(buttons, gbc);
         
-        JScrollPane scrPanel = new JScrollPane(panel);
+        //JScrollPane scrPanel = new JScrollPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setContentPane(scrPanel);
+        frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);
     }
