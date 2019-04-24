@@ -6,9 +6,8 @@ import java.sql.*;
  * Started by Cameron on April 3rd
  * Edited by Cameron on April 5th and 8th
  * make a timer so button unclickable for amount of time
- * maybe use if statement wih it
  */
-public class numberLesson{
+public class NumberLesson{
     private Connection conn;
     private Statement stmt;
     private ResultSet rs;
@@ -28,7 +27,7 @@ public class numberLesson{
     private JLabel nine = new JLabel("Number 9");
     private JLabel ten = new JLabel("Number 10");
     private JButton endButton = new JButton("Done");
-    public numberLesson(){
+    public NumberLesson(){
         panel.setLayout(new GridBagLayout());        
         endButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
@@ -65,15 +64,9 @@ public class numberLesson{
         panel.add(nine, gbc);
         panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberTen.gif")), gbc);
         panel.add(ten, gbc);
-        //panel.add(questionTwoInput, gbc);
-        //more quiz questions in the above order
-        //panel.add(password, gbc);
-        //panel.add(passInput, gbc);
         panel.add(endButton, gbc);
         
         JScrollPane scrPanel = new JScrollPane(panel);
-        //JPanel buttons = new JPanel(new GridBagLayout());
-        //buttons.add(endButton, gbc);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setContentPane(scrPanel);
