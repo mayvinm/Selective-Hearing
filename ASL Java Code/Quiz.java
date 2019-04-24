@@ -31,21 +31,21 @@ public class Quiz{
             public void actionPerformed(ActionEvent event){
                 JOptionPane.showMessageDialog(null, "Logged Out!");
                 frame.dispose();
-                new homeScreen();
+                new HomeScreen();
             }
         });
         
         greetButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
-                new greetingQuiz();
+                new GreetingQuiz();
             }
         });
         
         numberButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
-                new numberQuiz();
+                new NumberQuiz();
             }
         });
         
