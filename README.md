@@ -1,5 +1,5 @@
 # Welcome to Selective-Hearing
-#American Sign Language learning application User Manual
+American Sign Language learning application User Manual
 
 Verison: 2.1
 
