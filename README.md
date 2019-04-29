@@ -1,6 +1,6 @@
 # Welcome to Selective-Hearing
 American Sign Language learning application User Manual
-
+ 
 Verison: 2.1
 
 Authors: Cameron, Omar, Ryan, and Mayvin
