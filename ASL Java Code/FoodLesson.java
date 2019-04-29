@@ -9,20 +9,20 @@ import java.awt.event.*;
 public class FoodLesson{
     private JFrame frame = new JFrame("Food and Fruits Lesson");
     private JPanel panel = new JPanel();
-    private JLabel message = new JLabel("<html>Learn some of the names of food.<br/>" +
-        "Must finish lesson before leaving.</html>");
-    private JLabel apple = new JLabel("Apple");
-    private JLabel orange = new JLabel("Orange");
-    private JLabel banana = new JLabel("Banana");
-    private JLabel strawberry = new JLabel("Strawberry");
-    private JLabel lemon = new JLabel("Lemon");
-    private JLabel cherry = new JLabel("Cherry");
-    private JLabel watermelon = new JLabel("Watermelon");
-    private JLabel pasta = new JLabel("Pasta");
-    private JLabel meat = new JLabel("Meat");
-    private JLabel chicken = new JLabel("Chicken");
-    private JLabel eggs = new JLabel("Eggs");
-    private JButton endButton = new JButton("Done");
+    private JLabel message = new JLabel("<html><font size='4'><center>Learn some of the names of food.</center><br/>" +
+        "Click the button at the bottom when you are done.</font></html>");
+    private JLabel apple = new JLabel("<html><font size='6'>Apple</font></html>");
+    private JLabel orange = new JLabel("<html><font size='6'>Orange</font></html>");
+    private JLabel banana = new JLabel("<html><font size='6'>Banana</font></html>");
+    private JLabel strawberry = new JLabel("<html><font size='6'>Strawberry</font></html>");
+    private JLabel lemon = new JLabel("<html><font size='6'>Lemon</font></html>");
+    private JLabel cherry = new JLabel("<html><font size='6'>Cherry</font></html>");
+    private JLabel watermelon = new JLabel("<html><font size='6'>Watermelon</font></html>");
+    private JLabel pasta = new JLabel("<html><font size='6'>Pasta</font></html>");
+    private JLabel meat = new JLabel("<html><font size='6'>Meat</font></html>");
+    private JLabel chicken = new JLabel("<html><font size='6'>Chicken</font></html>");
+    private JLabel eggs = new JLabel("<html><font size='6'>Eggs</font></html>");
+    private JButton endButton = new JButton("<html><font size='5'>Done</font></html>");
     public FoodLesson(){
         frame();
         endButton.addActionListener(new ActionListener(){
@@ -34,8 +34,9 @@ public class FoodLesson{
         });
     }
     
-    public void frame(){
+    private void frame(){
         panel.setLayout(new GridBagLayout()); 
+        panel.setBackground(new Color(65, 131, 126));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
