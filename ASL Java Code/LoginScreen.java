@@ -16,16 +16,17 @@ public class LoginScreen{
     private JTextField userInput = new JTextField(10);
     private JPasswordField passInput = new JPasswordField(10); 
     public LoginScreen(){
-    	loginHandler = new DatabaseConnection();
+        loginHandler = new DatabaseConnection();
         frame();
     }
     
-    public void frame(){
-    	panel.setLayout(new GridBagLayout());
-
+    private void frame(){
+        panel.setLayout(new GridBagLayout());
+        panel.setBackground(new Color(65, 131, 126));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
+        gbc.insets = new Insets(5, 0, 5, 0);
 
         panel.add(username, gbc);
         panel.add(userInput, gbc);
@@ -33,27 +34,28 @@ public class LoginScreen{
         panel.add(passInput, gbc);
         
         JPanel buttons = new JPanel(new GridBagLayout());
+        buttons.setBackground(new Color(65, 131, 126));
         buttons.add(submit, gbc);
 
         gbc.weighty = 1;
         panel.add(buttons, gbc);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 400);
-        frame.setVisible(true);
         frame.setContentPane(panel);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.pack();
+        frame.setVisible(true);
         
         submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                     String user = userInput.getText().trim();
                     String pass = passInput.getText().trim();
                     if(loginHandler.login(user, pass)) {
-                    	frame.dispose();
+                        frame.dispose();
                         new Lesson();
                     }else {
-                    	JOptionPane.showMessageDialog(null, "Username and password do not match!");
+                        JOptionPane.showMessageDialog(null, "Username and password do not match!");
                     }
-              
             }
         });
     }

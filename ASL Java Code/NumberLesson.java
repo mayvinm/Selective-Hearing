@@ -1,34 +1,30 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 /**
  * Started by Cameron on April 3rd
- * Edited by Cameron on April 5th and 8th
- * make a timer so button unclickable for amount of time
+ * Edited by Cameron on April 5th and 8th and 28th
  */
 public class NumberLesson{
-    private Connection conn;
-    private Statement stmt;
-    private ResultSet rs;
     private JFrame frame = new JFrame("Numbers Lesson");
     private JPanel panel = new JPanel();
-    private JLabel message = new JLabel("<html>Learn the numbers 0 to 10.<br/>" +
-        "Must finish lesson before leaving.</html>");
-    private JLabel zero = new JLabel("Number 0");
-    private JLabel one = new JLabel("Number 1");
-    private JLabel two = new JLabel("Number 2");
-    private JLabel three = new JLabel("Number 3");
-    private JLabel four = new JLabel("Number 4");
-    private JLabel five = new JLabel("Number 5");
-    private JLabel six = new JLabel("Number 6");
-    private JLabel seven = new JLabel("Number 7");
-    private JLabel eight = new JLabel("Number 8");
-    private JLabel nine = new JLabel("Number 9");
-    private JLabel ten = new JLabel("Number 10");
-    private JButton endButton = new JButton("Done");
+    private JLabel message = new JLabel("<html><font size='4'><center>Learn the numbers 0 to 10.</center><br/>" +
+        "Click the button at the bottom when you are done.</font></html>");
+    private JLabel zero = new JLabel("<html><font size='6'>Number 0</font></html>");
+    private JLabel one = new JLabel("<html><font size='6'>Number 1</font></html>");
+    private JLabel two = new JLabel("<html><font size='6'>Number 2</font></html>");
+    private JLabel three = new JLabel("<html><font size='6'>Number 3</font></html>");
+    private JLabel four = new JLabel("<html><font size='6'>Number 4</font></html>");
+    private JLabel five = new JLabel("<html><font size='6'>Number 5</font></html>");
+    private JLabel six = new JLabel("<html><font size='6'>Number 6</font></html>");
+    private JLabel seven = new JLabel("<html><font size='6'>Number 7</font></html>");
+    private JLabel eight = new JLabel("<html><font size='6'>Number 8</font></html>");
+    private JLabel nine = new JLabel("<html><font size='6'>Number 9</font></html>");
+    private JLabel ten = new JLabel("<html><font size='6'>Number 10</font></html>");
+    private JButton endButton = new JButton("<html><font size='5'>Done</font></html>");
     public NumberLesson(){
-        panel.setLayout(new GridBagLayout());        
+        panel.setLayout(new GridBagLayout());  
+        panel.setBackground(new Color(65, 131, 126));
         endButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 JOptionPane.showMessageDialog(null, "Lesson Completed!");
@@ -42,27 +38,27 @@ public class NumberLesson{
         
         panel.add(message, gbc);
         
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberZero.png")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberZero.png")), gbc);
         panel.add(zero, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberOne.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberOne.jpg")), gbc);
         panel.add(one, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberTwo.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberTwoLesson.jpg")), gbc);
         panel.add(two, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberThree.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberThreeLesson.jpg")), gbc);
         panel.add(three, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberFour.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberFour.jpg")), gbc);
         panel.add(four, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberFive.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberFiveLesson.jpg")), gbc);
         panel.add(five, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberSix.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberSixLesson.jpg")), gbc);
         panel.add(six, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberSeven.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberSeven.jpg")), gbc);
         panel.add(seven, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberEight.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberEight.jpg")), gbc);
         panel.add(eight, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberNine.jpg")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberNine.jpg")), gbc);
         panel.add(nine, gbc);
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/numberTen.gif")), gbc);
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberTen.gif")), gbc);
         panel.add(ten, gbc);
         panel.add(endButton, gbc);
         

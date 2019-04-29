@@ -17,14 +17,13 @@ public class NumQuestionFive{
     private JPanel panel = new JPanel();
     private final JLabel TIME = new JLabel("0" + " seconds");
     //html and br tags put the second part of the message on a new line
-    private JLabel message = new JLabel("<html><center>Answer the questions for each image.</center>" + 
-        "<br/><center>You have 1 minute to complete the quiz.</center>" + "<br/>Click 'Finish' once your answers are inputted.</html>");
+    private JLabel message = new JLabel("<html><html><font size='4'><center>Answer the question." + 
+        "<br/>You have 1 minute to complete it." + "<br/>Click 'Finish' once your answer is selected.</font></center></html>");
     private JLabel questionFive = new JLabel("Solve the following problem: __ + 10 = 15");
     private JButton optionA = new JButton("A.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberSix.jpg"));
     private JButton optionC = new JButton("C.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberFive.jpg"));
     private JButton optionB = new JButton("B.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberThree.jpg"));
     private JButton optionD = new JButton("D.", new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Numbers/numberTwo.jpg"));
-    //private JButton submitButton = new JButton("<html><font size='4'>Submit and Check</font></html>");
     private JButton quitButton = new JButton("Quit Quiz");
     public NumQuestionFive(){
         frame();
@@ -36,10 +35,9 @@ public class NumQuestionFive{
                 counter++;
                 //number must be 2 digits higher than time you want
                 if (counter == 62) {
-                    //timer.removeActionListener(this);
-                    JOptionPane.showMessageDialog(null, "You are out of time! Answer being submitted.", "Warning", JOptionPane.WARNING_MESSAGE);
-                    //submitButton.doClick();
+                    JOptionPane.showMessageDialog(null, "You are out of time! You must retake the quiz!", "Warning", JOptionPane.WARNING_MESSAGE);
                     frame.dispose();
+                    new Quiz();
                 }
             }
         });
@@ -142,9 +140,11 @@ public class NumQuestionFive{
     
     private void frame(){
         panel.setLayout(new GridBagLayout());
+        panel.setBackground(new Color(65, 131, 126));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
+        gbc.insets = new Insets(5, 0, 5, 0);
         
         panel.add(message, gbc);
         //Question Five
@@ -160,11 +160,12 @@ public class NumQuestionFive{
         panel.add(optionC, gbc);
         panel.add(optionD, gbc);
         
-        JPanel buttons = new JPanel(new GridBagLayout());
-        buttons.add(quitButton, gbc);
+        JPanel button = new JPanel(new GridBagLayout());
+        button.setBackground(new Color(65, 131, 126));
+        button.add(quitButton, gbc);
 
         gbc.weighty = 1;
-        panel.add(buttons, gbc);
+        panel.add(button, gbc);
         
         //JScrollPane scrPanel = new JScrollPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

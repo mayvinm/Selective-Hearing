@@ -9,10 +9,10 @@ public class GreetingQuiz{
     private JFrame frame = new JFrame("Greetings Quiz");
     private JPanel panel = new JPanel();
     //br tag put the second part of the message on a new line, center tag centers the text, font tag increases font size, html tag required
-    private JLabel message = new JLabel("<html><font size='5'><center>Welcome to the Greetings Quiz! Answer the questions on the following pages.</center>" + 
-        "<br/><center>You will have 1 minute to complete each question.</center>" + "<br/>Click 'Submit and Check' once your answers are inputted." + 
+    private JLabel message = new JLabel("<html><font size='5'><center>Welcome to the Greetings Quiz! Select the name of the food/fruit shown." + 
+        "<br/><center>You will have 1 minute to complete each question. Click 'Submit and Check' once your answers are inputted." + 
         "<br/>The system will tell you if your answer is correct or not then move you to the next question. When you are ready, click 'Start'." +
-        "<br/>Click 'Quit' if you want to go back to the Quiz page at anytime, but your current question will not be saved.</font></html>");
+        "<br/>Click 'Quit' if you want to go back to the Quiz page at anytime, but your current question will not be saved.</center></font></html>");
     private JButton startButton = new JButton("<html><font size='5'>Start</font></html>");
     private JButton quitButton = new JButton("<html><font size='5'>Quit</font></html>");
     public GreetingQuiz(){
@@ -33,15 +33,18 @@ public class GreetingQuiz{
         });
     }
     
-    public void frame(){
+    private void frame(){
         panel.setLayout(new GridBagLayout());
+        panel.setBackground(new Color(65, 131, 126));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
+        gbc.insets = new Insets(5, 0, 5, 0);
         
         panel.add(message, gbc);
         
         JPanel buttons = new JPanel(new GridBagLayout());
+        buttons.setBackground(new Color(65, 131, 126));
         buttons.add(startButton, gbc);
         buttons.add(quitButton, gbc);
 

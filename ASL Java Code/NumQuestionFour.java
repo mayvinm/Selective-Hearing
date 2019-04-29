@@ -17,13 +17,13 @@ public class NumQuestionFour{
     private JPanel panel = new JPanel();
     private final JLabel TIME = new JLabel("0" + " seconds");
     //html and br tags put the second part of the message on a new line
-    private JLabel message = new JLabel("<html><center>Answer the questions for each image.</center>" + 
-        "<br/><center>You have 1 minute to complete the quiz.</center>" + "<br/>Click 'Finish' once your answers are inputted.</html>");
+    private JLabel message = new JLabel("<html><html><font size='4'><center>Answer the question." + 
+        "<br/>You have 1 minute to complete it." + "<br/>Click 'Finish' once your answer is selected.</font></center></html>");
     private JLabel questionFour = new JLabel("This means '7'. True or False?");
     private JRadioButton True = new JRadioButton("True");
     private JRadioButton False = new JRadioButton("False");
-    private JButton submitButton = new JButton("<html><font size='4'>Submit and Check</font></html>");
-    private JButton quitButton = new JButton("Quit Quiz");
+    private JButton submitButton = new JButton("<html><font size='5'>Submit and Check</font></html>");
+    private JButton quitButton = new JButton("<html><font size='5'>Quit Quiz</font></html>");
     public NumQuestionFour(){
         frame();
         //1000 milliseconds = 1 second
@@ -34,10 +34,8 @@ public class NumQuestionFour{
                 counter++;
                 //number must be 2 digits higher than time you want
                 if (counter == 62) {
-                    //timer.removeActionListener(this);
                     JOptionPane.showMessageDialog(null, "You are out of time! Answer being submitted.", "Warning", JOptionPane.WARNING_MESSAGE);
                     submitButton.doClick();
-                    frame.dispose();
                 }
             }
         });
@@ -125,9 +123,11 @@ public class NumQuestionFour{
     
     private void frame(){
         panel.setLayout(new GridBagLayout());
+        panel.setBackground(new Color(65, 131, 126));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
+        gbc.insets = new Insets(5, 0, 5, 0);
         
         panel.add(message, gbc);
         //Question Four
@@ -137,11 +137,12 @@ public class NumQuestionFour{
         panel.add(False, gbc);
         panel.add(submitButton, gbc);
         
-        JPanel buttons = new JPanel(new GridBagLayout());
-        buttons.add(quitButton, gbc);
+        JPanel button = new JPanel(new GridBagLayout());
+        button.setBackground(new Color(65, 131, 126));
+        button.add(quitButton, gbc);
 
         gbc.weighty = 1;
-        panel.add(buttons, gbc);
+        panel.add(button, gbc);
         
         //JScrollPane scrPanel = new JScrollPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

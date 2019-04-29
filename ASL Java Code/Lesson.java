@@ -8,23 +8,18 @@ import java.awt.event.*;
 public class Lesson{
     private JFrame frame = new JFrame("App Lessons");
     private JPanel panel = new JPanel();
-    private JLabel greetText = new JLabel("Greetings Lesson");
-    private JLabel numberText = new JLabel("Numbers Lesson");
-    private JLabel alphaText = new JLabel("Alphabet Lesson");
-    private JLabel foodText = new JLabel("Food Lesson");
-    private JButton quizButton = new JButton("Go to Quizes");
+    private JLabel greetText = new JLabel("<html><font size='8'>Greetings Lesson</font></html>");
+    private JLabel numberText = new JLabel("<html><font size='8'>Numbers Lesson</font></html>");
+    private JLabel alphaText = new JLabel("<html><font size='8'>Alphabet Lesson</font></html>");
+    private JLabel foodText = new JLabel("<html><font size='8'>Food Lesson</font></html>");
+    private JButton quizButton = new JButton("Go to Quizzes");
     private JButton greetButton = new JButton("Begin");
     private JButton numberButton = new JButton("Begin");
     private JButton alphaButton = new JButton("Begin");
     private JButton foodButton = new JButton("Begin");
     private JButton logoutButton = new JButton("Logout");
     public Lesson(){
-        panel.setLayout(new GridLayout(4, 2));
-        greetButton.setPreferredSize(new Dimension(80, 50));
-        numberButton.setPreferredSize(new Dimension(80, 50));
-        alphaButton.setPreferredSize(new Dimension(80, 50));
-        foodButton.setPreferredSize(new Dimension(80, 50));
-        logoutButton.setPreferredSize(new Dimension(80, 50));
+        frame();
         
         logoutButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
@@ -51,7 +46,7 @@ public class Lesson{
         alphaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 frame.dispose();
-                //put alphabet lesson constructor here;
+                new AlphaLesson();
             }
         });
         
@@ -68,15 +63,24 @@ public class Lesson{
                 new Quiz();
             }
         });
-
+    }
+    
+    public void frame(){
+        panel.setLayout(new GridLayout(5, 0));
+        panel.setBackground(new Color(65, 131, 126));
+        
         panel.add(alphaText);
         panel.add(alphaButton);
+        
         panel.add(numberText);
         panel.add(numberButton);
+        
         panel.add(greetText);
         panel.add(greetButton);
+        
         panel.add(foodText);
         panel.add(foodButton);
+        
         panel.add(quizButton);
         panel.add(logoutButton);
         

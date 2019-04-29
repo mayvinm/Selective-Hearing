@@ -2,34 +2,34 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-/**
- * Created by Cameron on April 21st
- */
-public class GreetQuestionFour{
+
+
+public class FoodQuestionTwo{
     private Connection conn;
     private PreparedStatement stmt;
     private ResultSet rs;
     private String value;
     private Timer timer;
     private int counter = 0;
-    private JFrame frame = new JFrame("Greetings Quiz: Question Four");
+    private JFrame frame = new JFrame("Food Quiz: Question Two");
     private JPanel panel = new JPanel();
     private final JLabel TIME = new JLabel("0" + " seconds");
     //html and br tags put the second part of the message on a new line
     private JLabel message = new JLabel("<html><html><font size='4'><center>Answer the question." + 
         "<br/>You have 1 minute to complete it." + "<br/>Click 'Finish' once your answer is selected.</font></center></html>");
-    private JLabel questionFour = new JLabel("Does this mean 'Thank you' or 'Hello'?");
-    private JRadioButton thanks = new JRadioButton("Thank you");
-    private JRadioButton hello = new JRadioButton("Hello");
+    private JLabel questionTwo = new JLabel("What is the name of the food shown?");
+    private JRadioButton chicken = new JRadioButton("Chicken");
+    private JRadioButton eggs = new JRadioButton("Eggs");
+    private JRadioButton pasta = new JRadioButton("Pasta");
     private JButton submitButton = new JButton("<html><font size='5'>Submit and Check</font></html>");
     private JButton quitButton = new JButton("<html><font size='5'>Quit Quiz</font></html>");
-    public GreetQuestionFour(){
+    public FoodQuestionTwo(){
         frame();
         //1000 milliseconds = 1 second
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TIME.setText(String.valueOf(counter + "  seconds"));
+                TIME.setText(String.valueOf(counter + " seconds"));
                 counter++;
                 //number must be 2 digits higher than time you want
                 if (counter == 62) {
@@ -51,15 +51,21 @@ public class GreetQuestionFour{
             }
         });
         
-        hello.addActionListener(new ActionListener(){
+        chicken.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
-                value = "Hello";
+                value = "Chicken";
             }
         });
         
-        thanks.addActionListener(new ActionListener(){
+        eggs.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
-                value = "Thank you";
+                value = "Eggs";
+            }
+        });
+        
+        pasta.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent event){
+                value = "Pasta";
             }
         });
         
@@ -81,8 +87,8 @@ public class GreetQuestionFour{
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Your answer has been submitted!");
             String extractQuery = "Select submittedanswers.submitAnswer, answers.correctAnswer From answers " +
-            "Inner Join (Select submitAnswer From submittedanswers Order By tableID DESC limit 1) As submittedanswers "+
-            "On submittedanswers.submitAnswer = answers.correctAnswer";
+                "Inner Join (Select submitAnswer From submittedanswers Order By tableID DESC limit 1) As submittedanswers "+
+                "On submittedanswers.submitAnswer = answers.correctAnswer";
             stmt = conn.prepareStatement(extractQuery);
             rs = stmt.executeQuery();
             if(rs.next()){
@@ -114,7 +120,7 @@ public class GreetQuestionFour{
             }
             conn.close();
             frame.dispose();
-            new GreetQuestionFive();
+            new FoodQuestionThree();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -129,11 +135,12 @@ public class GreetQuestionFour{
         gbc.insets = new Insets(5, 0, 5, 0);
         
         panel.add(message, gbc);
-        //Question Four
-        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Greetings/thankSign.png")), gbc);
-        panel.add(questionFour, gbc);
-        panel.add(thanks, gbc);
-        panel.add(hello, gbc);
+        //Question One
+        panel.add(new JLabel(new ImageIcon("C:/Users/cam36/Desktop/CSCI 401/ASL/Pictures/Food/eggs.gif")), gbc);
+        panel.add(questionTwo, gbc);
+        panel.add(chicken, gbc);
+        panel.add(eggs, gbc);
+        panel.add(pasta, gbc);
         panel.add(submitButton, gbc);
         
         JPanel button = new JPanel(new GridBagLayout());
