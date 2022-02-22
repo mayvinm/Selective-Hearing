@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-/**
- * Started by Cameron on April 28th
- */
+
 public class AlphaLessonFreeTrial{
     private JFrame frame = new JFrame("Alphabet Lesson");
     private JPanel panel = new JPanel();
