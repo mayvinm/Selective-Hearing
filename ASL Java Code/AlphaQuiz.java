@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-/**
- * Started by Cameron on March 23rd
- * Edited by Cameron on April 1st, April 16th and April 20th
- */
+
 public class AlphaQuiz{
     private JFrame frame = new JFrame("Alphabet Quiz");
     private JPanel panel = new JPanel();
