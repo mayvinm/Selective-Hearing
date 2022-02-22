@@ -2,9 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-/**
- * Created by Cameron on April 28th
- */
+
 public class AlphaQuestionTwo{
     private Connection conn;
     private PreparedStatement stmt;
